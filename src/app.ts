@@ -20,8 +20,9 @@ export function buildApp() {
 
   //CORS for documentation UI
   app.register(cors, {
-    origin: true, 
+    origin: ["https://task-manager-api-1zej.onrender.com", "http://localhost:3000"], 
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    credentials: true,
   });
 
   app.register(swagger, {
@@ -33,6 +34,10 @@ export function buildApp() {
         version: "1.0.0",
       },
       servers: [
+        {
+          url: "https://task-manager-api-1zej.onrender.com",
+          description: "Production server",
+        },
         {
           url: "http://localhost:3000",
           description: "Development server",
