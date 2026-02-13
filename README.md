@@ -2,7 +2,8 @@
 
 A simple Task Management API built for the case study.  
 
-You can test the API from the documentation: https://task-manager-api-1zej.onrender.com/docs
+You can test the API from the documentation. First request may take around 30 seconds to respond due to the cold start: 
+https://task-manager-api-1zej.onrender.com/docs
 or locally: http://localhost:3000/docs
 
 
