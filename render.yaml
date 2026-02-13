@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: task-manager-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+
