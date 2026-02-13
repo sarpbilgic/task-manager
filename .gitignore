@@ -1,6 +1,26 @@
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Dependencies
 node_modules
+
+# Build
 dist
+
+# Prisma
 /generated
+
+# Tests
+coverage
+.nyc_output
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
 
 

@@ -9,6 +9,9 @@ RUN npm ci
 
 COPY . .
 
+# Use placeholder DATABASE_URL for Prisma generate and build (not actually connected)
+ENV DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder"
+
 RUN npx prisma generate
 RUN npm run build
 
@@ -20,7 +23,9 @@ COPY package*.json ./
 COPY prisma ./prisma/
 
 RUN npm ci --omit=dev && npm cache clean --force
-RUN npx prisma generate
+
+# Use placeholder DATABASE_URL for Prisma generate only
+RUN DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder" npx prisma generate
 
 COPY --from=builder /app/dist ./dist
 
