@@ -20,7 +20,10 @@ export class TaskRepository {
   }
 
   update(id: string, data: UpdateTaskInput) {
-    return this.prisma.task.update({ where: { id }, data });
+    const updateData = Object.fromEntries(
+      Object.entries(data).filter(([_, value]) => value !== undefined)
+    );
+    return this.prisma.task.update({ where: { id }, data: updateData });
   }
 
   delete(id: string) {
