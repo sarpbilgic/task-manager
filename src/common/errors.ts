@@ -20,6 +20,13 @@ export function registerErrorHandler(app: FastifyInstance) {
         message: error.message,                                     
       });
     }
+
+    if (typeof error === "object" && error !== null && "validation" in error && error.validation) {
+      return reply.status(400).send({
+        message: "message" in error ? (error.message as string) : "Validation failed",
+        details: error.validation,
+      });
+    }
                                   
     if (error instanceof ZodError) {
       return reply.status(400).send({

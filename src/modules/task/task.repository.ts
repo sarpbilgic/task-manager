@@ -10,7 +10,7 @@ export class TaskRepository {
 
   findAll(completed?: boolean) {
     return this.prisma.task.findMany({
-      where: completed !== undefined ? { completed } : undefined,
+      ...(completed !== undefined && { where: { completed } }),
       orderBy: { createdAt: "desc" },
     });
   }

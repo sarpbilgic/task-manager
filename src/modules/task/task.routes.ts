@@ -6,7 +6,7 @@ import { getTaskController, getTaskByIdController } from "./controllers/get_task
 import { updateTaskController } from "./controllers/update_task.js";
 import { createTaskSchema, createTaskResponseSchema } from "./schemas/create_task.schema.js";
 import { getTasksQuerySchema } from "./schemas/get_task.schema.js";
-import { taskResponseSchema } from "./schemas/task.schema.js";
+import { taskResponseSchema, uuidSchema } from "./schemas/task.schema.js";
 import { updateTaskSchema } from "./schemas/update_task.schema.js";
 import { TaskRepository } from "./task.repository.js";
 import { TaskService } from "./task.service.js";
@@ -52,7 +52,7 @@ export default async function taskRoutes(fastify: FastifyInstance) {
         description: "Get a task by ID",
         tags: ["Tasks"],
         params: z.object({
-          id: z.string().describe("Task UUID"),
+          id: uuidSchema.describe("Task UUID"),
         }),
         response: {
           200: taskResponseSchema,
@@ -72,7 +72,7 @@ export default async function taskRoutes(fastify: FastifyInstance) {
         description: "Update a task (partial update)",
         tags: ["Tasks"],
         params: z.object({
-          id: z.string().describe("Task UUID"),
+          id: uuidSchema.describe("Task UUID"),
         }),
         body: updateTaskSchema,
         response: {
@@ -93,7 +93,7 @@ export default async function taskRoutes(fastify: FastifyInstance) {
         description: "Delete a task",
         tags: ["Tasks"],
         params: z.object({
-          id: z.string().describe("Task UUID"),
+          id: uuidSchema.describe("Task UUID"),
         }),
         response: {
           204: z.null(),

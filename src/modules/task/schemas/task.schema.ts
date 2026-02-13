@@ -2,6 +2,8 @@ import { z } from "zod";
 
 export const titleField = z.string().trim().min(1, "Title cannot be empty");
 
+export const uuidSchema = z.uuid({ message: "Invalid task ID format" });
+
 export const taskResponseSchema = z.object({
   id: z.string(),
   title: z.string(),
