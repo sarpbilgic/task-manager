@@ -52,7 +52,7 @@ or locally: http://localhost:3000/docs
 - Picked Fastify + TypeScript because it’s fast, typed, and easy to structure without too much boilerplate.
 - Used Zod for validation so I can define request/response shapes in one place and get types + runtime checks together.
 - Added extra endpoints for CRUD operations to make the API more complete.
-- Added 'completed' filter to the GET /tasks endpoint to get all tasks or only completed tasks.
+- Added 'completed' filter to the GET /tasks endpoint
 - Used a centralized error handler to map errors to HTTP status codes and return consistent JSON responses.
 - Added OpenAPI docs and Scalar UI for easy manual testing.
 - Dockerized the app and deployed it to Render.
@@ -64,7 +64,7 @@ or locally: http://localhost:3000/docs
 - **Docker + Prisma build-time env**: Prisma generation can require env variables at build time.
   - Solution: ensure Prisma client generation doesn’t fail during Docker build (build-time vs runtime env separation).
 - **Fastify validation errors**: To make sure validation errors return `400` instead of `500` I've added a custom error handler to the Fastify instance.
-- **If it was a real project I would add a user model and authentication to add ownership to tasks. I would also add rate limiting to protect the API from abuse and pagination to possibility of a user having a lot of tasks.
+- **If it was a real project I would add a user model and authentication to add ownership to tasks. I would also add rate limiting to protect the API from abuse, pagination to possibility of a user having a lot of tasks and integration tests with a test db.
 
 ---
 
